@@ -6,13 +6,22 @@
 
 
 def paired_parens(string):
+
   array = []
 
-  for character in string: 
-    array += character 
-    
+  for char in string: 
 
-  return array 
+    if char == '(':
+      array.append(char)
+
+    elif char ==')' and array[-1]=='(':
+      array.pop()
+    
+    
+  if len(array) == 0: 
+    return True
+  else: 
+    return False
 
 
 
@@ -21,8 +30,8 @@ def paired_parens(string):
 
 # TEST CASES
 print(paired_parens("(david)((abby))"))# -> True
-# paired_parens("()rose(jeff") # -> False
-# paired_parens(")(") # -> False
-# paired_parens("()") # -> True
-# paired_parens("(((potato())))") # -> True
-# paired_parens("(())(water)()") # -> True
+print(paired_parens("()rose(jeff"))# -> False
+# print(paired_parens(")(")) # -> False
+print(paired_parens("()")) # -> True
+print(paired_parens("(((potato())))")) # -> True
+print(paired_parens("(())(water)()"))# -> True
