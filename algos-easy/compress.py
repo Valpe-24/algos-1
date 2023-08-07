@@ -13,14 +13,56 @@
 
 
 def compress(s):
-    pass # TODO:
+    letter_dict = {}
+
+    for letter in s:
+
+        if letter in letter_dict:
+            letter_dict[letter] += 1
+        else:
+            letter_dict[letter] = 1
+
+    letters = list(letter_dict.keys())
+    numbers = list(letter_dict.values())
+
+    compress_word = []
+
+    for number in numbers:
+        if number != 1:
+            compress_word.append(str(number))
+            compress_word.append(letters[numbers.index(number)])
+        elif number == 1:
+            compress_word.append(letters[numbers.index(number)])
+    print(''.join(compress_word))
 
 
 
 
 # TEST CASES
 compress('ccaaatsss') # -> '2c3at3s'
-# compress('ssssbbz') # -> '4s2bz'
-# compress('ppoppppp') # -> '2po5p'
-# compress('nnneeeeeeeeeeeezz') # -> '3n12e2z'
-# compress('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy');  # -> '127y'
+compress('ssssbbz') # -> '4s2bz'
+compress('ppoppppp') # -> '2po5p'
+compress('nnneeeeeeeeeeeezz') # -> '3n12e2z'
+compress('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')# -> '127y'
+
+
+# def compress(s):
+#     s += '.'
+#     result = []
+#     i, j = 0, 0
+    
+#     while j < len(s):
+#         if s[i] == s[j]:
+#             j += 1
+#         else:
+#             letter_count = j - i
+#             if letter_count == 1:
+#                 result.append(s[i])
+#             else:
+#                 result.append(str(letter_count))
+#                 result.append(s[i])
+#             i = j
+                
+#     return ''.join(result)
+
+# print(compress('ccaaatsss') )
