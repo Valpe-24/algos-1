@@ -8,7 +8,11 @@
 
 
 def two_sum(numbers, target_sum):
-    pass #TODO:
+
+    for i in range(len(numbers) - 1):
+        for j in range(i + 1, len(numbers)):
+            if numbers[i] + numbers[j] == target_sum:
+                return (i , j)
 
 
 
@@ -17,8 +21,8 @@ def two_sum(numbers, target_sum):
 
 # TEST CASES
 print(two_sum([3, 2, 5, 4, 1], 8)) # -> (0, 2)
-# two_sum([4, 7, 9, 2, 5, 1], 5) # -> (0, 5)
-# two_sum([4, 7, 9, 2, 5, 1], 3) # -> (3, 5)
-# two_sum([1, 6, 7, 2], 13) # -> (1, 2)
-# two_sum([9, 9], 18) # -> (0, 1)
-# two_sum([6, 4, 2, 8 ], 12) # -> (1, 3)
+print(two_sum([4, 7, 9, 2, 5, 1], 5)) # -> (0, 5)
+print(two_sum([4, 7, 9, 2, 5, 1], 3)) # -> (3, 5)
+print(two_sum([1, 6, 7, 2], 13)) # -> (1, 2)
+print(two_sum([9, 9], 18)) # -> (0, 1)
+print(two_sum([6, 4, 2, 8 ], 12)) # -> (1, 3)
